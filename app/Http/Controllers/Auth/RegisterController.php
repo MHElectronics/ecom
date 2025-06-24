@@ -73,4 +73,5 @@ class RegisterController extends Controller
             'email_verified_at' => now(),
         ]);
     }
+    
 }

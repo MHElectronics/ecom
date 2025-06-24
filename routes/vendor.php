@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\VendorRegisterController; // adjust if needed
+use App\Http\Controllers\Auth\VendorLoginController; // if you have it
+use App\Http\Controllers\Vendor\VendorDashboardController;
+
+Route::middleware('guest:vendor')->group(function () {
+    // Route::get('login', [VendorLoginController::class, 'showLoginForm'])->name('login');
+    // Route::post('login', [VendorLoginController::class, 'login'])->name('login.submit');
+
+    Route::get('register', [VendorRegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [VendorRegisterController::class, 'register'])->name('register.submit');
+});
+
+Route::middleware('auth:vendor')->group(function () {
+    // Route::get('dashboard', [VendorDashboardController::class, 'index'])->name('dashboard');
+    // Route::post('logout', [VendorLoginController::class, 'logout'])->name('logout');
+});
+
+// Route::group(['middleware' => ['auth:vendor']], function () {
+//     Route::get('dashboard', [VendorController::class, 'dashboard'])->name('vendor.dashboard');
+
+//     Route::get('profile', [VendorController::class, 'profile'])->name('vendor.profile');
+//     Route::post('profile/update', [VendorController::class, 'updateProfile'])->name('vendor.profile.update');
+
+//     Route::resource('products', ProductController::class);
+
+//     Route::get('orders', [VendorController::class, 'orders'])->name('vendor.orders');
+//     Route::get('orders/{order}', [VendorController::class, 'viewOrder'])->name('vendor.orders.view');
+
+//     Route::post('products/{product}/status', [ProductController::class, 'updateStatus'])->name('vendor.products.status');
+// });
