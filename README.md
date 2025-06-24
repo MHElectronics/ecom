@@ -59,9 +59,3 @@ php artisan serve
 * _scss_
 * _vueuse/head_
 
-### Author Info
-~~~
-Name: Rashiqul Rony
-Email: rashiqulrony@gmail.com
-Github: https://github.com/RashiqulRony
-~~~
