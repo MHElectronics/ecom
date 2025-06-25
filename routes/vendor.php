@@ -16,7 +16,7 @@ Route::middleware('guest:vendor')->group(function () {
 
 Route::middleware('auth:vendor')->group(function () {
      Route::get('dashboard', [VendorDashboardController::class, 'index'])->name('dashboard');
-     Route:: get('create-product', [VendorDashboardController::class, 'createProduct'])->name('product.create');
+     Route:: get('create-product', [VendorDashboardController::class, 'createProduct'])->name('products.create');
     // Route::post('logout', [VendorLoginController::class, 'logout'])->name('logout');
 
     

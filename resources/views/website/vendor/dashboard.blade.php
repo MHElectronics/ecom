@@ -33,7 +33,8 @@
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <span>Create New Product</span>
-               <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm">Create</a>
+                <a href="{{ route('vendor.products.create') }}" class="btn btn-primary btn-sm">Create</a>
+
             </div>
         </div>
 
