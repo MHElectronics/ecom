@@ -69,6 +69,10 @@ return [
     */
 
     'providers' => [
+        'vendors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Vendor::class, // Make sure this model exists
+        ],
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -77,11 +81,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'vendors' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Vendor::class,
+       
+        'guards' => [
+            'vendor' => [
+                'driver' => 'session',
+                'provider' => 'vendors',
+            ],
         ],
-
+        
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

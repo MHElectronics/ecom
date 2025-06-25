@@ -13,24 +13,17 @@
 @endsection
 
 @section('title')
-       Vendor Login
+    Vendor Login
 @endsection
 
 @section('_css')
     <style>
         .input-group-pass {
-            display: -ms-flexbox;
             display: flex;
-            -ms-flex-align: center;
             align-items: center;
             padding: 0.375rem 0.75rem;
-            margin-bottom: 0;
             font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
             color: #495057;
-            text-align: center;
-            white-space: nowrap;
             background-color: #e9ecef;
             border: 1px solid #ced4da;
             border-radius: 0.25rem;
@@ -59,16 +52,20 @@
         <div class="container">
             <div class="row align-items-start justify-content-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <form class="border p-3 rounded" method="post" action="{{ route('login') }}">
+                    <form class="border p-3 rounded" method="POST" action="{{ route('vendor.login') }}">
                         @csrf
 
-                        <div class="form-group">
-                            <label>Email *</label>
+                        {{-- Optional error flash --}}
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
 
-                            <input type="text"
-                                   class="form-control @error('email') is-invalid @enderror "
-                                   name="email" value="{{ old('email') }}" required autocomplete="email"
-                                   autofocus>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                   name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -84,12 +81,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Password *</label>
+                            <label for="password">Password *</label>
                             <div class="input-group mb-3">
-                                <input id="password" type="password" class="form-control password @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                       class="form-control password @error('password') is-invalid @enderror"
+                                       name="password" required autocomplete="current-password">
                                 <div class="input-group-append">
                                     <label class="input-group-pass">
-                                        <input type="checkbox" onclick="myFunction()"> &nbsp; Show Password
+                                        <input type="checkbox" onclick="togglePassword()"> &nbsp; Show Password
                                     </label>
                                 </div>
                             </div>
@@ -103,14 +102,12 @@
                         <div class="form-group">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="flex-1">
-                                    <input id="dd" class="checkbox-custom" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label for="dd" class="checkbox-custom-label">Remember Me</label>
+                                    <input class="checkbox-custom" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="remember" class="checkbox-custom-label">Remember Me</label>
                                 </div>
                                 <div class="eltio_k2">
                                     @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}">
-                                            Forget Password?
-                                        </a>
+                                        <a href="{{ route('password.request') }}">Forget Password?</a>
                                     @endif
                                 </div>
                             </div>
@@ -131,13 +128,9 @@
 
 @push('_js')
     <script>
-        function myFunction() {
-            var x = document.querySelector(".password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+        function togglePassword() {
+            var x = document.getElementById("password");
+            x.type = x.type === "password" ? "text" : "password";
         }
     </script>
 @endpush
