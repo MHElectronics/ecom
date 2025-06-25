@@ -13,7 +13,7 @@
 @endsection
 
 @section('title')
-    Login
+       Vendor Login
 @endsection
 
 @section('_css')
@@ -47,7 +47,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('web.home') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Login</li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop Login</li>
                         </ol>
                     </nav>
                 </div>
@@ -63,11 +63,11 @@
                         @csrf
 
                         <div class="form-group">
-                            <label>Email/Phone *</label>
+                            <label>Email *</label>
 
                             <input type="text"
-                                   class="form-control @error('email') is-invalid @enderror @error('mobile') is-invalid @enderror"
-                                   name="username" value="{{ old('username') }}" required autocomplete="username"
+                                   class="form-control @error('email') is-invalid @enderror "
+                                   name="email" value="{{ old('email') }}" required autocomplete="email"
                                    autofocus>
 
                             @error('email')
