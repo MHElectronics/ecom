@@ -12,4 +12,8 @@ class VendorDashboardController extends Controller
     {
         return view('website.vendor.dashboard'); // Ensure this view exists
     }
+    public function createProduct()
+    {
+        return view('website.vendor.products.create'); // Ensure this view exists
+    }
 }
