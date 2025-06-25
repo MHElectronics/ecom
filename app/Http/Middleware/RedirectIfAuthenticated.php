@@ -26,6 +26,8 @@ class RedirectIfAuthenticated
                     return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
                 }
                 break;
+
+                
             default:
                 if(Auth::guard($guard)->check()){
                     return redirect(RouteServiceProvider::HOME);

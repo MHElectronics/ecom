@@ -121,7 +121,7 @@
                                 Login
                             </button>
                         </div>
-                        <p class="text-center">New User? <a href="{{ route('register') }}">Register Here</a></p>
+                        <p class="text-center">New User? <a href="{{ route('vendor.register') }}">Register Here</a></p>
                     </form>
                 </div>
             </div>

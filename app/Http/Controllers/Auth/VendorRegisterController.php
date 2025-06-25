@@ -44,6 +44,7 @@ class VendorRegisterController extends Controller
         return Vendor::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
     }

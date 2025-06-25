@@ -6,15 +6,16 @@ use App\Http\Controllers\Auth\VendorLoginController; // if you have it
 use App\Http\Controllers\Vendor\VendorDashboardController;
 
 Route::middleware('guest:vendor')->group(function () {
-    // Route::get('login', [VendorLoginController::class, 'showLoginForm'])->name('login');
-    // Route::post('login', [VendorLoginController::class, 'login'])->name('login.submit');
+    Route::get('login', [VendorLoginController::class, 'showLoginForm'])->name('login');
+    
+    Route::post('login', [VendorLoginController::class, 'login'])->name('login.submit');
 
     Route::get('register', [VendorRegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [VendorRegisterController::class, 'register'])->name('register.submit');
 });
 
 Route::middleware('auth:vendor')->group(function () {
-    // Route::get('dashboard', [VendorDashboardController::class, 'index'])->name('dashboard');
+     Route::get('dashboard', [VendorDashboardController::class, 'index'])->name('dashboard');
     // Route::post('logout', [VendorLoginController::class, 'logout'])->name('logout');
 });
 

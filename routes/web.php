@@ -10,10 +10,11 @@ use App\Http\Controllers\Website\ProductController;
 use App\Http\Controllers\Website\OrderController;
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::group(['as' => 'web.'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/login/{provider}', [SocialController::class, 'redirect'])->name('social.login');
+    // Route::get('/login/{provider}', [SocialController::class, 'redirect'])->name('social.login');
 
     Route::get('/categories', [HomeController::class, 'categories'])->name('categories');
     Route::get('/categories/{slug}', [HomeController::class, 'categoryByProducts'])->name('categories.products');

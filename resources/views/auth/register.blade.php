@@ -123,12 +123,7 @@
                         <div class="form-group">
                             <p class="text-center">Or</p>
                         </div>
-
-                        <div class="form-group">
-                            <a href="{{ route('#', 'google') }}"
-                               class="btn btn-md full-width bg-light text-dark fs-md ft-medium mb-2">
-                                <i class="lni lni-google mr-2"></i> Sign Up with Google
-                            </a>
+                        
                         <p class="text-center">Already Have an account? <a href="{{ route('login') }}">Login</a></p>
                     </form>
                 </div>
