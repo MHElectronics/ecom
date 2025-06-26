@@ -32,11 +32,11 @@ class ProductController extends Controller
         $categories = Category::all();
         
         $brands = Brand::all();// Categories created by admin
-        $merchant = Merchant::all()
+        $merchants = Merchant::all();
         
         
 
-        return view('website.vendor.products.create', compact('categories', 'brands'));
+        return view('website.vendor.products.create', compact('categories', 'brands', 'merchants'));
 
     }
 
@@ -61,6 +61,6 @@ class ProductController extends Controller
             $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
         }
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('index')->with('success', 'Product created successfully.');
     }
 }

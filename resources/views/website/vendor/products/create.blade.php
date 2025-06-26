@@ -52,7 +52,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Select Category <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2" name="category_id">
+                                     <select class="form-control select2" name="category_id">
                                                 <option value="" selected hidden disabled></option>
                                                 @if(!empty($categories))
                                                     @foreach($categories as $category)
@@ -70,7 +70,11 @@
                                     <label class="form-control-label">Select Brand</label>
                                     <select class="form-control select2" name="brand_id">
                                         <option value="" selected hidden disabled></option>
-                                      
+                                      @if(!empty($brands))
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     @error('brand_id') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
@@ -82,7 +86,12 @@
                                     <label class="form-control-label">Select Merchant</label>
                                     <select class="form-control select2" name="merchant_id">
                                         <option value="" selected hidden disabled></option>
+                                      @if (!empty($merchants))
+                                            @foreach($merchants as $merchant)
+                                                <option value="{{ $merchant->id }}" {{ old('merchant_id') == $merchant->id ? 'selected' : '' }}>{{ $merchant->name }}</option>
+                                            @endforeach
                                       
+                                      @endif
                                     </select>
                                     @error('merchant_id') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
