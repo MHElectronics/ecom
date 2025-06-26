@@ -33,7 +33,7 @@
             <div class="col-sm-12 col-xl-12 mg-t-20 mg-xl-t-0">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('vendor.products.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-layout form-layout-1">
                                 <div class="row mg-b-25" data-select2-id="11">
@@ -44,7 +44,7 @@
                                                 <label for="General">General Products</label>
 
                                                 <input type="radio" id="Book" name="type" value="Book" {{ old('type') == 'Book' ? 'checked' : '' }} />
-                                                <label for="Book">Book Products</label>
+                                             
                                             </div>
                                         </div>
                                     </div>

@@ -123,7 +123,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('vendor.profile.settings') }#"
+                            <a href="#"
                                @if(Request::routeIs('vendor.profile.settings')) class="active" @endif
                             >
                                 <i class="icon ion-ios-gear"></i> Settings
@@ -137,7 +137,7 @@
                             </a>
                         </li>
                     </ul>
-                    <form id="logout-form" action="#" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('vendor.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div><!-- dropdown-menu -->
