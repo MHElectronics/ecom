@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\VendorRegisterController; // adjust if needed
 use App\Http\Controllers\Auth\VendorLoginController; // if you have it
 use App\Http\Controllers\Vendor\VendorDashboardController;
+use App\Http\Controllers\Vendor\ProductController; // add this line
 
 Route::middleware('guest:vendor')->group(function () {
     Route::get('login', [VendorLoginController::class, 'showLoginForm'])->name('login');
@@ -18,7 +19,16 @@ Route::middleware('auth:vendor')->group(function () {
      Route::get('dashboard', [VendorDashboardController::class, 'index'])->name('dashboard');
      Route:: get('create-product', [VendorDashboardController::class, 'createProduct'])->name('products.create');
     Route::post('logout', [VendorLoginController::class, 'logout'])->name('logout');
+    // Route::get('profile', [VendorDashboardController::class, 'profile'])->name('profile');
+
+    // Route::post('profile/update', [VendorDashboardController::class, 'updateProfile'])->name('profile.update');
+     
+
     
+    Route::get('orders', [ProductController::class, 'orders'])->name('orders');
+    Route::get('orders/{order}', [ProductController::class, 'viewOrder'])->name('orders.view');
+    Route::resource('products', ProductController::class);
+
 
     
 });
