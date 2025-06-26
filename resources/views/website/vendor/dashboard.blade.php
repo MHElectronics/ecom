@@ -37,15 +37,16 @@
 
             </div>
         </div>
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Active products</span>
+                <a href="  {{route('vendor.products.index')}}" class="btn btn-primary btn-sm">View</a>
 
-        {{-- Active Orders Section --}}
-        <div class="card">
-            <div class="card-header">Active Orders</div>
-            <ul class="list-group list-group-flush">
-                {{-- Your orders will go here --}}
-            </ul>
+            </div>
         </div>
 
+        {{-- Active Orders Section --}}
+       
     </div>
 </div>
 @endsection

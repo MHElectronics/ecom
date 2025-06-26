@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Vendor;
 
+
 use App\Http\Controllers\Controller;
 use App\Traits\Media;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
-use App\Models\Merchant; // Assuming you have a Merchant model
+use App\Models\Merchant;
+ // Assuming you have a Merchant model
 
 class ProductController extends Controller
 {
@@ -63,4 +65,13 @@ class ProductController extends Controller
 
         return redirect()->route('index')->with('success', 'Product created successfully.');
     }
+    
+    public function index()
+    {
+        // Example: get all products of the vendor
+        $products = Product::paginate(10); // or simplePaginate(10)
+ // Adjust this logic if you filter by vendor
+        return view('website.vendor.products.index', compact('products'));
+    }
+
 }

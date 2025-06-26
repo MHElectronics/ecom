@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.vendor')
 
 @section('title')
     Products
@@ -18,7 +18,7 @@
     <div class="row row-sm">
         <div class="col-sm-12 col-xl-12 mg-t-20 mg-xl-t-0">
 
-            <form action="{{ route('admin.products.index') }}" method="get">
+            <form action="{{ route('vendor.products.index') }}" method="get">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">

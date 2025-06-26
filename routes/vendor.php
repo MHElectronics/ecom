@@ -25,11 +25,9 @@ Route::middleware('auth:vendor')->group(function () {
      
 
     
-    Route::get('orders', [ProductController::class, 'orders'])->name('orders');
-    Route::get('orders/{order}', [ProductController::class, 'viewOrder'])->name('orders.view');
+   
     Route::resource('products', ProductController::class);
-
-
+    
     
 });
 
