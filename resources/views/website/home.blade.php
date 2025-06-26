@@ -186,15 +186,16 @@
 
                             <div class="card-body p-0">
                                 <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{ route('web.products.details', $product->slug) }}">
-                                        <img class="card-img-top" src="{{ asset('storage/products/'. $product->image) }}" alt="{{ $product->name }}">
-                                    </a>
+                                <a class="card-img-top d-block overflow-hidden" href="#">
+    <img class="card-img-top" src="{{ asset('storage/products/'. $product->image) }}" alt="{{ $product->name }}">
+</a>
+
                                 </div>
                             </div>
                             <div class="card-footer b-0 p-3 pb-0 d-flex align-items-start justify-content-center bg-white">
                                 <div class="text-left">
                                     <div class="text-center">
-                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="{{ route('web.products.details', $product->slug) }}">{{ $product->name }}</a></h5>
+                                        <h5 class="fw-bolder fs-md mb-0 lh-1 mb-1"><a href="#">{{ $product->name }}</a></h5>
                                         @if($product->discount_value > 0 && $product->discount_type)
                                             <div class="elis_rty">
                                                 <span class="text-muted ft-medium line-through mr-2">Tk. {{ $product->price }}</span>
@@ -209,7 +210,7 @@
                                 </div>
                             </div>
                             <div class="pb-5">
-                                <a href="{{ route('web.products.details', $product->slug) }}" class="btn btn-block btn-sm btn-order">
+                                <a href="#" class="btn btn-block btn-sm btn-order">
                                     <i class="lni lni-cart"></i> Order
                                 </a>
                                 @if($product->size || $product->color)
@@ -217,11 +218,11 @@
                                         <i class="lni lni-shopping-basket"></i> Add to cart
                                     </a>
                                 @else
-                                    <a href="javascript:void(0)" @click="addToCart('{{ route('web.cart.add', $product->slug) }}')" class="btn btn-block btn-sm btn-cart">
+                                    <a href="javascript:void(0)" @click="addToCart('#')" class="btn btn-block btn-sm btn-cart">
                                         <i class="lni lni-shopping-basket"></i> Add to cart
                                     </a>
                                 @endif
-                                <a class="btn btn-block btn-sm btn-detail" href="{{ route('web.products.details', $product->slug) }}">
+                                <a class="btn btn-block btn-sm btn-detail" href="#">
                                     <i class="lni lni-text-align-justify"></i> Details
                                 </a>
                             </div>
