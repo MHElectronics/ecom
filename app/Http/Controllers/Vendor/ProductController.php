@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Merchant;
+
  // Assuming you have a Merchant model
 
 class ProductController extends Controller
@@ -101,11 +102,20 @@ class ProductController extends Controller
         
 
         $product->update($request->all());
-
         if ($request->hasFile('image')) {
-            $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
-            
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/products', $filename);
+        
+            $product->image = $filename;
+            $product->save();
         }
+        
+
+        // if ($request->hasFile('image')) {
+        //     $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
+            
+        // }
 
         return redirect()->route('vendor.products.index')->with('success', 'Product updated successfully.');
     }
