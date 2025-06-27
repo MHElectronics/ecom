@@ -27,7 +27,11 @@ Route::middleware('auth:vendor')->group(function () {
     
    
     Route::resource('products', ProductController::class);
-    
+    Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::post('products/{product}/update', [ProductController::class, 'update'])->name('products.update');
+    Route::post('products/{product}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('orders', [VendorDashboardController::class, 'orders'])->name('orders');
+    Route::get('orders/{order}', [VendorDashboardController::class, 'viewOrder'])->name('orders.view');
     
 });
 

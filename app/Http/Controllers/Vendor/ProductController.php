@@ -63,7 +63,7 @@ class ProductController extends Controller
             $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
         }
 
-        return redirect()->route('index')->with('success', 'Product created successfully.');
+        
     }
     
     public function index()
@@ -73,5 +73,43 @@ class ProductController extends Controller
  // Adjust this logic if you filter by vendor
         return view('website.vendor.products.index', compact('products'));
     }
+    /**
+     * Show the form to edit a product.
+     */
+    public function edit(Product $product)
+    {
+        $categories = Category::all();
+        $brands = Brand::all();
+        $merchants = Merchant::all();
+
+        return view('website.vendor.products.edit', compact('product', 'categories', 'brands', 'merchants'));
+    }
+    /**
+     * Update a product submitted by vendor.
+     */
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:100|unique:products,code,' . $product->id,
+            'category_id' => 'required|exists:categories,id',
+            'brand_id' => 'nullable|exists:brands,id',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        
+
+        $product->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
+            
+        }
+
+        return redirect()->route($this->ROUTE_AND_VIEW . 'index')->with('success', __('Product updated successfully.'));
+    }
+    
 
 }

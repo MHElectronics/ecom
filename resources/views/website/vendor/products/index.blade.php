@@ -126,8 +126,8 @@
                                                     Action
                                                 </a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ route('admin.products.edit', $product->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                                                    <a class="dropdown-item" href="{{ route('admin.products.show', $product->id) }}"><i class="fa fa-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="{{ route('vendor.products.edit', $product->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('vendor.products.show', $product->id) }}"><i class="fa fa-eye"></i> View</a>
                                                     <a onclick="deleteRow('{{ route('admin.products.destroy', $product->id) }}')" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
                                                 </div>
                                             </div>

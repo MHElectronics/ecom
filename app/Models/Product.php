@@ -41,6 +41,7 @@ class Product extends Model
         'status',
         'feature',
         'sort',
+        'vendor_id',
     ];
 
     public function images()
