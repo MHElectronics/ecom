@@ -68,7 +68,7 @@
         <div class="col-sm-12 col-xl-12 mg-t-20 mg-xl-t-0">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('vendor.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-layout form-layout-1">
@@ -79,8 +79,6 @@
                                             <input type="radio" id="General" name="type" value="General" {{ old('type', $product->type) == 'General' ? 'checked' : '' }}/>
                                             <label for="General">General Products</label>
 
-                                            <input type="radio" id="Book" name="type" value="Book" {{ old('type', $product->type) == 'Book' ? 'checked' : '' }} />
-                                            <label for="Book">Book Products</label>
                                         </div>
                                     </div>
                                 </div>

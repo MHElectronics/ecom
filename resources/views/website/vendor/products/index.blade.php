@@ -80,7 +80,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <button type="submit" class="btn btn-outline-info"><i class="fa fa-search"></i></button>
-                            <a href="{{ route('admin.products.index') }}" class="btn btn-outline-purple"><i class="icon ion-loop"></i></a>
+                            <a href="{{ route('vendor.products.index') }}" class="btn btn-outline-purple"><i class="icon ion-loop"></i></a>
                         </div>
                     </div>
                 </div>
@@ -104,8 +104,7 @@
                             </tr>
                             </thead>
                             <tbody id="tablecontents">
-                            @if(count($products))
-                                @foreach($products as $key => $product)
+                            @if(!empty($products) && count($products))                                @foreach($products as $key => $product)
                                     <tr class="row1" data-id="{{ $product->id }}">
                                         <th scope="row">{{ ++$key }}</th>
                                         <td>

@@ -98,7 +98,6 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
         ]);
-
         
 
         $product->update($request->all());
@@ -108,7 +107,7 @@ class ProductController extends Controller
             
         }
 
-        return redirect()->route($this->ROUTE_AND_VIEW . 'index')->with('success', __('Product updated successfully.'));
+        return redirect()->route('vendor.products.index')->with('success', 'Product updated successfully.');
     }
     
 
