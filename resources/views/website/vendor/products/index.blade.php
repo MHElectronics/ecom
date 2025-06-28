@@ -127,8 +127,17 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="{{ route('vendor.products.edit', $product->id) }}"><i class="fa fa-edit"></i> Edit</a>
                                                     <a class="dropdown-item" href="{{ route('vendor.products.show', $product->id) }}"><i class="fa fa-eye"></i> View</a>
-                                                    <a onclick="deleteRow('{{ route('vendor.products.destroy', $product->id) }}')" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
-                                                </div>
+                                                    <form id="delete-form-{{ $product->id }}" action="{{ route('vendor.products.destroy', $product->id) }}" method="POST" style="display: none;">
+    @csrf
+    
+</form>
+
+<a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $product->id }}').submit();">
+    <i class="fa fa-trash"></i> Delete
+</a>
+
+                                                   
+                                          </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -201,6 +210,8 @@
 
             }
         });
+
+        
     </script>
 
 @endpush
