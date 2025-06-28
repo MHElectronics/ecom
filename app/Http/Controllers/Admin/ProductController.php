@@ -344,4 +344,22 @@ class ProductController extends Controller
             ]);
         }
     }
+    public function approve($id)
+{
+    $product = Product::findOrFail($id);
+    $product->approval_status = 'approved';
+    $product->save();
+
+    return back()->with('success', 'Product approved successfully.');
+}
+
+public function reject($id)
+{
+    $product = Product::findOrFail($id);
+    $product->approval_status = 'rejected';
+    $product->save();
+
+    return back()->with('error', 'Product has been rejected.');
+}
+
 }

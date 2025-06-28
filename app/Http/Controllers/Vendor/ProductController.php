@@ -56,6 +56,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
+            'approval_status' => 'pending'
         ]);
 
         $product = Product::create($request->all());

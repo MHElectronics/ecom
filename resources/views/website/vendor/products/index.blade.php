@@ -118,7 +118,15 @@
                                         <td>{{ $product->category ? $product->category->name : '--' }}</td>
                                         <td>{{ $product->brand ? $product->brand->name : '--' }}</td>
                                         <td>{{ $product->price }}</td>
-                                        <td>{{ $product->status }}</td>
+                                        <td>
+    @if($product->approval_status == 'pending')
+        <span class="badge badge-warning">Pending</span>
+    @elseif($product->approval_status == 'approved')
+        <span class="badge badge-success">Approved</span>
+    @else
+        <span class="badge badge-danger">Rejected</span>
+    @endif
+</td>
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-outline-info dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
