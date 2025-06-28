@@ -83,7 +83,12 @@
                 </li>
                 <li class="sub-item"><a href="{{ route('admin.products.create') }}"
                                         class="sub-link {{ Request::routeIs('admin.products.create') ? 'active' : ''  }}">Add
-                        New</a></li>
+                        New</a>
+                    </li>
+                <li class="sub-item"><a href="{{ route('admin.products.create') }}"
+                                        class="sub-link {{ Request::routeIs('admin.products.create') ? 'active' : ''  }}">Product Approval</a>
+                    </li>
+                    
             </ul>
         </li>
 
@@ -91,7 +96,7 @@
             <a href="{{ route('admin.orders.index') }}"
                class="br-menu-link {{ Request::routeIs('admin.orders*') ? 'active' : '' }}"><i
                     class="menu-item-icon icon ion-android-send tx-24"></i>
-                <span class="menu-item-label">Orders</span>
+                <span class="menu-item-label">Order</span>
                 @if(count(newOrderCount()) > 0)
                     <span class="badge badge-danger">{{ count(newOrderCount()) }}</span>
                 @endif

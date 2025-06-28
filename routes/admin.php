@@ -30,9 +30,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::delete('products/image/delete/{image_id}', 'ProductController@imageDelete')->name('products.imageDelete');
     Route::post('products/sortable', 'ProductController@sortable')->name('products.sortable');
     Route::resource('products', 'ProductController');
-    Route::post('/admin/products/{id}/approve', [ProductController::class, 'approve'])->name('admin.products.approve');
-Route::post('/admin/products/{id}/reject', [ProductController::class, 'reject'])->name('admin.products.reject');
-
+   
     Route::resource('sliders', 'SliderController');
     Route::get('agents/withdraw-request', 'AgentController@withdrawRequest')->name('agents.withdrawRequest');
     Route::post('agents/withdraw-request/{id}', 'AgentController@withdrawRequestUpdate')->name('agents.withdrawRequestUpdate');
