@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ReportController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\OrderApprovalController;
 
 # Admin auth routes...
 Route::group(['namespace' => 'Auth'], function () {
@@ -25,11 +26,20 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::resource('brands', 'BrandController');
     Route::resource('writers', 'WriterController');
     Route::resource('merchants', 'MerchantController');
+    
+    
     Route::resource('orders', 'OrderController')->only('index', 'show', 'update', 'destroy');
 
     Route::delete('products/image/delete/{image_id}', 'ProductController@imageDelete')->name('products.imageDelete');
     Route::post('products/sortable', 'ProductController@sortable')->name('products.sortable');
     Route::resource('products', 'ProductController');
+    Route::resource('approval','OrderApprovalController');
+    Route::prefix('admin/product')->name('admin.product.')->group(function () {
+        Route::get('approval', [OrderApprovalController::class, 'index'])->name('approval.index');
+        Route::post('approval/{product}/approve', [OrderApprovalController::class, 'approve'])->name('approval.approve');
+        Route::post('approval/{product}/reject', [OrderApprovalController::class, 'reject'])->name('approval.reject');
+    });
+    
    
     Route::resource('sliders', 'SliderController');
     Route::get('agents/withdraw-request', 'AgentController@withdrawRequest')->name('agents.withdrawRequest');
