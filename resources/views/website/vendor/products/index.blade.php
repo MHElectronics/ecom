@@ -127,7 +127,7 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="{{ route('vendor.products.edit', $product->id) }}"><i class="fa fa-edit"></i> Edit</a>
                                                     <a class="dropdown-item" href="{{ route('vendor.products.show', $product->id) }}"><i class="fa fa-eye"></i> View</a>
-                                                    <a onclick="deleteRow('{{ route('admin.products.destroy', $product->id) }}')" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
+                                                    <a onclick="deleteRow('{{ route('vendor.products.destroy', $product->id) }}')" class="dropdown-item" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -145,7 +145,7 @@
                                 <tfoot>
                                 <tr>
                                     <td colspan="9">
-                                        {{ $products->appends(request()->all())->links('admin.shared._paginate') }}
+                                        {{ $products->appends(request()->all())->links('vendor.shared._paginate') }}
                                     </td>
                                 </tr>
                                 </tfoot>

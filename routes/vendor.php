@@ -32,6 +32,7 @@ Route::middleware('auth:vendor')->group(function () {
     Route::post('products/{product}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('orders', [VendorDashboardController::class, 'orders'])->name('orders');
     Route::get('orders/{order}', [VendorDashboardController::class, 'viewOrder'])->name('orders.view');
+    // Route::post('delete-product/{product}', [ProductController::class, 'delete'])->name('products.delete');
     
 });
 

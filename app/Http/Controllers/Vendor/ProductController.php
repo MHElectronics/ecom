@@ -119,6 +119,19 @@ class ProductController extends Controller
 
         return redirect()->route('vendor.products.index')->with('success', 'Product updated successfully.');
     }
+    /**
+     * Delete a product.
+     */
+    public function destroy(Product $product)
+    {
+        // Delete the product
+        $product->delete();
+
+        // Optionally, delete the associated media if needed
+        // $this->deleteMedia($product, $this->ASSET_PATH);
+
+        return redirect()->route('vendor.products.index')->with('success', 'Product deleted successfully.');
+    }
     
 
 }
