@@ -63,7 +63,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
         }
-
+        return redirect()->route('vendor.products.index')->with('success', 'Product updated successfully.');  
         
     }
     
