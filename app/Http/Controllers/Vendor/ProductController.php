@@ -48,7 +48,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:100|unique:products,code',
             'category_id' => 'required|exists:categories,id',
@@ -56,22 +56,29 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
-            'approval_status' => 'pending'
         ]);
-
-        $product = Product::create($request->all());
-
+    
+        // Set approval_status manually
+        $validated['approval_status'] = 'pending';
+    
+        $product = Product::create($validated);
+    
         if ($request->hasFile('image')) {
             $this->uploadMedia($request->file('image'), $product, $this->ASSET_PATH);
         }
-        return redirect()->route('vendor.products.index')->with('success', 'Product updated successfully.');  
-        
-    }
+    
+                 return redirect()->route('vendor.products.index')
+            ->with('success', 'Product submitted for approval.');
+        }
+    
+
     
     public function index()
     {
         // Example: get all products of the vendor
-        $products = Product::paginate(10); // or simplePaginate(10)
+        $vendorId = auth('vendor')->id();
+$products = Product::where('vendor_id', $vendorId)->paginate(10);
+// or simplePaginate(10)
  // Adjust this logic if you filter by vendor
         return view('website.vendor.products.index', compact('products'));
     }

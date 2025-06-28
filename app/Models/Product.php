@@ -69,4 +69,9 @@ class Product extends Model
     {
         return $this->belongsTo(Writer::class, 'writer_id', 'id');
     }
+    public function vendor()
+{
+    return $this->belongsTo(Vendor::class); // Or User::class if vendors are users
+}
+
 }
